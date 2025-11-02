@@ -15,6 +15,7 @@ dependencies = [
     { name = "autogen-agentchat" },
     { name = "autogen-ext", extra = ["grpc", "mcp", "ollama", "openai"] },
     { name = "bs4" },
+    { name = "dotenv" },
     { name = "gradio" },
     { name = "httpx" },
     { name = "ipywidgets" },
@@ -26,12 +27,14 @@ dependencies = [
     { name = "langgraph-checkpoint-sqlite" },
     { name = "langsmith" },
     { name = "lxml" },
+    { name = "massive" },
     { name = "mcp", extra = ["cli"] },
     { name = "mcp-server-fetch" },
     { name = "openai" },
     { name = "openai-agents" },
     { name = "playwright" },
     { name = "plotly" },
+    { name = "polygon" },
     { name = "polygon-api-client" },
     { name = "psutil" },
     { name = "pypdf" },
@@ -57,6 +60,7 @@ requires-dist = [
     { name = "autogen-agentchat", specifier = ">=0.4.9.2" },
     { name = "autogen-ext", extras = ["grpc", "mcp", "ollama", "openai"], specifier = ">=0.4.9.2" },
     { name = "bs4", specifier = ">=0.0.2" },
+    { name = "dotenv", specifier = ">=0.9.9" },
     { name = "gradio", specifier = ">=5.22.0" },
     { name = "httpx", specifier = ">=0.28.1" },
     { name = "ipywidgets", specifier = ">=8.1.5" },
@@ -68,12 +72,14 @@ requires-dist = [
     { name = "langgraph-checkpoint-sqlite", specifier = ">=2.0.6" },
     { name = "langsmith", specifier = ">=0.3.18" },
     { name = "lxml", specifier = ">=5.3.1" },
+    { name = "massive", specifier = ">=2.0.1" },
     { name = "mcp", extras = ["cli"], specifier = ">=1.5.0" },
     { name = "mcp-server-fetch", specifier = ">=2025.1.17" },
     { name = "openai", specifier = ">=1.68.2" },
     { name = "openai-agents", specifier = ">=0.0.15" },
     { name = "playwright", specifier = ">=1.51.0" },
     { name = "plotly", specifier = ">=6.0.1" },
+    { name = "polygon", specifier = ">=1.2.8" },
     { name = "polygon-api-client", specifier = ">=1.14.5" },
     { name = "psutil", specifier = ">=7.0.0" },
     { name = "pypdf", specifier = ">=5.4.0" },
@@ -950,6 +956,17 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/b2/9d/c3b43da9515bd270df0f80548d9944e389870713cc1fe2b8fb35fe2bcefd/docstring_parser-0.17.0.tar.gz", hash = "sha256:583de4a309722b3315439bb31d64ba3eebada841f2e2cee23b99df001434c912", size = 27442, upload-time = "2025-07-21T07:35:01.868Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/55/e2/2537ebcff11c1ee1ff17d8d0b6f4db75873e3b0fb32c2d4a2ee31ecb310a/docstring_parser-0.17.0-py3-none-any.whl", hash = "sha256:cf2569abd23dce8099b300f9b4fa8191e9582dda731fd533daf54c4551658708", size = 36896, upload-time = "2025-07-21T07:35:00.684Z" },
+]
+
+[[package]]
+name = "dotenv"
+version = "0.9.9"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "python-dotenv" },
+]
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/b2/b7/545d2c10c1fc15e48653c91efde329a790f2eecfbbf2bd16003b5db2bab0/dotenv-0.9.9-py2.py3-none-any.whl", hash = "sha256:29cf74a087b31dafdb5a446b6d7e11cbce8ed2741540e2339c69fbef92c94ce9", size = 1892, upload-time = "2025-02-19T22:15:01.647Z" },
 ]
 
 [[package]]
@@ -2085,6 +2102,20 @@ wheels = [
 ]
 
 [[package]]
+name = "massive"
+version = "2.0.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "certifi" },
+    { name = "urllib3" },
+    { name = "websockets" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/d5/ee/49823c94a368173fd6b7d592b8e5e9be3a9df403cdbdada57af4d2ff6453/massive-2.0.1.tar.gz", hash = "sha256:419cd341570435b0998122919edc34cc7031f9d7a9c9ae128e1f228012160d81", size = 44064, upload-time = "2025-10-30T22:44:13.75Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/e7/3e/2b02f58960029301a7b5969931efece0f0532d6efa66afcc92a4d801ba3b/massive-2.0.1-py3-none-any.whl", hash = "sha256:666d14f4401b30d7c25d8360817ef040c1a616df109775f8662f3e6078375e76", size = 61893, upload-time = "2025-10-30T22:44:12.476Z" },
+]
+
+[[package]]
 name = "matplotlib-inline"
 version = "0.2.1"
 source = { registry = "https://pypi.org/simple" }
@@ -2805,6 +2836,20 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/0c/63/961d47c9ffd592a575495891cdcf7875dc0903ebb33ac238935714213789/plotly-6.3.1.tar.gz", hash = "sha256:dd896e3d940e653a7ce0470087e82c2bd903969a55e30d1b01bb389319461bb0", size = 6956460, upload-time = "2025-10-02T16:10:34.16Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/3f/93/023955c26b0ce614342d11cc0652f1e45e32393b6ab9d11a664a60e9b7b7/plotly-6.3.1-py3-none-any.whl", hash = "sha256:8b4420d1dcf2b040f5983eed433f95732ed24930e496d36eb70d211923532e64", size = 9833698, upload-time = "2025-10-02T16:10:22.584Z" },
+]
+
+[[package]]
+name = "polygon"
+version = "1.2.8"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "httpx" },
+    { name = "requests" },
+    { name = "websocket-client" },
+    { name = "websockets" },
+]
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/03/ba/07ca7cb1568c5d1fa4c66c01ce639a107633095a851a8719f1e356ab1ba1/polygon-1.2.8-py2.py3-none-any.whl", hash = "sha256:aa4d339f0d4c201970ef46c9d4c9199640c28abf6d0c37547e77f9870896d942", size = 112484, upload-time = "2025-08-28T18:32:58.72Z" },
 ]
 
 [[package]]
@@ -4169,6 +4214,15 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/0b/02/ae6ceac1baeda530866a85075641cec12989bd8d31af6d5ab4a3e8c92f47/webencodings-0.5.1.tar.gz", hash = "sha256:b36a1c245f2d304965eb4e0a82848379241dc04b865afcc4aab16748587e1923", size = 9721, upload-time = "2017-04-05T20:21:34.189Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/f4/24/2a3e3df732393fed8b3ebf2ec078f05546de641fe1b667ee316ec1dcf3b7/webencodings-0.5.1-py2.py3-none-any.whl", hash = "sha256:a0af1213f3c2226497a97e2b3aa01a7e4bee4f403f95be16fc9acd2947514a78", size = 11774, upload-time = "2017-04-05T20:21:32.581Z" },
+]
+
+[[package]]
+name = "websocket-client"
+version = "1.9.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/2c/41/aa4bf9664e4cda14c3b39865b12251e8e7d239f4cd0e3cc1b6c2ccde25c1/websocket_client-1.9.0.tar.gz", hash = "sha256:9e813624b6eb619999a97dc7958469217c3176312b3a16a4bd1bc7e08a46ec98", size = 70576, upload-time = "2025-10-07T21:16:36.495Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/34/db/b10e48aa8fff7407e67470363eac595018441cf32d5e1001567a7aeba5d2/websocket_client-1.9.0-py3-none-any.whl", hash = "sha256:af248a825037ef591efbf6ed20cc5faa03d3b47b9e5a2230a529eeee1c1fc3ef", size = 82616, upload-time = "2025-10-07T21:16:34.951Z" },
 ]
 
 [[package]]
