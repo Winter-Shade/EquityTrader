@@ -1,36 +1,67 @@
+import os
+import http.client
+import json
 from mcp.server.fastmcp import FastMCP
-from duckduckgo_search import DDGS
-from typing import Dict, Any
+from dotenv import load_dotenv
 
-mcp = FastMCP("DuckDuckGo MCP Server")
+load_dotenv()
+mcp = FastMCP("Serper Search MCP Server")
+
+SERPER_API_KEY = os.getenv("SERPER_API_KEY")
+
+if not SERPER_API_KEY:
+    raise ValueError("❌ SERPER_API_KEY not found in .env")
+
 
 @mcp.tool()
-async def search(query: str, max_results: int = 5, region: str = "wt-wt") -> str:
-    """Perform a DuckDuckGo web search.
+async def search(query: str, n_results: int = 5) -> str:
+    """
+    Perform a Serper.dev Google search.
 
     Args:
-        query: The search query.
-        max_results: Maximum number of results to return.
-        region: Region code (e.g., "in-en", "us-en", "wt-wt" for global).
+        query: Search query.
+        n_results: Max number of results to return.
     """
+
     try:
-        with DDGS() as ddgs:
-            results = list(ddgs.text(query, region=region, max_results=max_results))
+        conn = http.client.HTTPSConnection("google.serper.dev")
+
+        payload = json.dumps({"q": query})
+        headers = {
+            "X-API-KEY": SERPER_API_KEY,
+            "Content-Type": "application/json",
+        }
+
+        conn.request("POST", "/search", payload, headers)
+        res = conn.getresponse()
+
+        data = res.read().decode("utf-8")
+        parsed = json.loads(data)
+
+        # Extract the "organic" results
+        results = parsed.get("organic", [])
 
         if not results:
             return "No results found."
 
         formatted = []
-        for r in results:
+        for r in results[:n_results]:
             title = r.get("title", "No title")
-            href = r.get("href", "No link")
-            body = r.get("body", "")
-            formatted.append(f"Title: {title}\nLink: {href}\nSnippet: {body}\n")
+            link = r.get("link", "No link")
+            snippet = r.get("snippet", "")
+
+            formatted.append(
+                f"Title: {title}\n"
+                f"Link: {link}\n"
+                f"Snippet: {snippet}\n"
+            )
 
         return "\n".join(formatted)
+
     except Exception as e:
-        return f"Error during DuckDuckGo search: {str(e)}"
+        return f"Error during Serper search: {str(e)}"
+
 
 if __name__ == "__main__":
-    print("🚀 DuckDuckGo MCP Server running...")
+    print("🚀 Serper MCP Server running...")
     mcp.run()
